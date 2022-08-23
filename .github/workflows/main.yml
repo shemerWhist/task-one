@@ -16,14 +16,14 @@ jobs:
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: ap-south-1
          
-     - name: login to amazon ECR
-       id: login-ecr
-       uses: aws-actions/amazon-ecr-login@v1
+#      - name: login to amazon ECR
+#        id: login-ecr
+#        uses: aws-actions/amazon-ecr-login@v1
        
      - name: build, tag' and push to amazon ECR
        env: 
-         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-         ECR_REPOSITORY: docker_nodejs_demo
+         ECR_REGISTRY: 930354804502.dkr.ecr.eu-central-1.amazonaws.com/task1-repo
+         ECR_REPOSITORY: task1-repo
          IMAGE_TAG: nodejs_demo_image
          
        run: |
