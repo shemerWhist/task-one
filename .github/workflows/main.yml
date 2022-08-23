@@ -20,19 +20,19 @@ jobs:
        id: login-ecr
        uses: aws-actions/amazon-ecr-login@v1
        
-     - name: build, tag' and push to amazon ECR
-       env: 
-         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-         ECR_REPOSITORY: task1-repo
-         IMAGE_TAG_LATEST: Latest
-         IMAGE_TAG_MIX: ${{steps.}}
+#      - name: build, tag' and push to amazon ECR
+#        env: 
+#          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+#          ECR_REPOSITORY: task1-repo
+#          IMAGE_TAG_LATEST: Latest
+#          IMAGE_TAG_MIX: ${{steps.}}
          
      - name: Set output
        id: vars
        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
-#      - name: Check output
-#        run: echo ${{ steps.vars.outputs.short_ref }}
+     - name: Check output
+       run: echo ${{ steps.vars.outputs.short_ref }}
          
 #        run: |
 #         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
