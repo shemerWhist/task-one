@@ -24,8 +24,16 @@ jobs:
        env: 
          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
          ECR_REPOSITORY: task1-repo
-         IMAGE_TAG: nodejs_demo_image
+         IMAGE_TAG_LATEST: Latest
+         IMAGE_TAG_MIX: ${{steps.}}
          
-       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+     - name: Set output
+       id: vars
+       run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+     - name: Check output
+       run: echo ${{ steps.vars.outputs.short_ref }}
+         
+#        run: |
+#         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+#         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
