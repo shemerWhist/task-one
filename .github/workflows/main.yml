@@ -31,8 +31,8 @@ jobs:
        id: vars
        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
-     - name: Check output
-       run: echo ${{ steps.vars.outputs.short_ref }}
+#      - name: Check output
+#        run: echo ${{ steps.vars.outputs.short_ref }}
          
 #        run: |
 #         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
