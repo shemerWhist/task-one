@@ -40,5 +40,5 @@ jobs:
          tags: Latest, task1-${{steps.vars.outputs.short_ref}}-${{steps.vars.outputs.sha_short}}
          
        run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_MIX .
+        docker build .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
